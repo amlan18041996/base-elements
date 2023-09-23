@@ -1,0 +1,175 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer components {
+    /* BUTTON START */
+    .btn {
+        @apply inline-flex justify-center place-items-center py-1.5 px-3 
+            text-black text-base text-center font-normal whitespace-nowrap 
+            no-underline align-middle cursor-pointer space-x-1 
+            tracking-wide select-none rounded transition 
+            focus:outline-none focus:ring-2 focus:ring-offset-1 
+            focus:ring-gray-100 bg-gray-50 hover:bg-gray-100;
+    }
+    .btn > * {
+        @apply inline-block fill-current;
+    }
+    .btn-sm {
+        @apply py-0.5 text-sm;
+    }
+    .btn-lg {
+        @apply py-2.5 text-lg;
+    }
+    .btn:disabled {
+        @apply cursor-not-allowed opacity-50 focus:ring-0;
+    }
+    .btn.loading {
+        @apply text-opacity-25 cursor-wait opacity-50 focus:ring-0;
+    }
+    .btn-group {
+        @apply relative inline-flex;
+    }
+    .btn-group > .btn {
+        @apply rounded-none focus:ring-0 focus:ring-offset-0;
+    }
+    .btn-group > .btn:first-child {
+        @apply rounded-tl rounded-bl;
+    }
+    .btn-group > .btn:last-child {
+        @apply rounded-tr rounded-br;
+    }
+    .btn-dialog {
+        @apply text-white bg-orange-500 hover:bg-orange-700 focus:ring-orange-700;
+    }
+    .btn-primary {
+        @apply text-white bg-blue-500 focus:ring-blue-600 hover:bg-blue-600;
+    }
+    .btn-secondary {
+        @apply text-white bg-gray-500 focus:ring-gray-600 hover:bg-gray-600;
+    }
+    .btn-success {
+        @apply text-white bg-green-500 hover:bg-green-600 focus:ring-green-600;
+    }
+    .btn-danger {
+        @apply text-white bg-red-500 hover:bg-red-600 focus:ring-red-600;
+    }
+    .btn-warning {
+        @apply text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-yellow-600;
+    }
+    .btn-info {
+        @apply text-white bg-sky-500 hover:bg-sky-600 focus:ring-sky-600;
+    }
+    .btn-outline {
+        @apply text-black bg-white border border-gray-100 hover:text-white hover:bg-gray-200;
+    }
+    .btn-outline-dialog {
+        @apply text-orange-500 bg-white border border-orange-500 hover:text-white hover:bg-orange-500 focus:ring-orange-500;
+    }
+    .btn-outline-primary {
+        @apply text-blue-500 bg-white border border-blue-500 hover:text-white hover:bg-blue-500 focus:ring-blue-500;
+    }
+    .btn-outline-secondary {
+        @apply text-gray-500 bg-white border border-gray-500 hover:text-white hover:bg-gray-500 focus:ring-gray-500;
+    }
+    .btn-outline-success {
+        @apply text-green-500 bg-white border border-green-500 hover:text-white hover:bg-green-500 focus:ring-green-500;
+    }
+    .btn-outline-danger {
+        @apply text-red-500 bg-white border border-red-500 hover:text-white hover:bg-red-500 focus:ring-red-500;
+    }
+    .btn-outline-warning {
+        @apply text-yellow-500 bg-white border border-yellow-500 hover:text-white hover:bg-yellow-500 focus:ring-yellow-500;
+    }
+    .btn-outline-info {
+        @apply text-sky-500 bg-white border border-sky-500 hover:text-white hover:bg-sky-500 focus:ring-sky-500;
+    }
+    /* BUTTON END */
+
+    /* FORM ELEMENTS START */
+    /* .form-input, .form-select, .form-date {
+        @apply w-full block px-3 text-gray-600 font-normal bg-gray-50 rounded shadow-sm 
+            tracking-wide border border-solid border-gray-300 transition duration-300 
+            focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-400 focus:border-gray-400;
+    }
+    .form-input, .form-select, .form-date {
+        @apply py-1.5 text-base;
+    }
+    .form-input-sm, .form-select-sm, .form-date-sm {
+        @apply py-1 text-sm;
+    }
+    .form-input-lg, .form-select-lg, .form-date-lg {
+        @apply py-2 text-lg;
+    } */
+    /* FORM ELEMENTS END */
+
+    /* CARD START */
+    .card {
+        @apply min-w-0 relative flex flex-col break-words border bg-clip-border;
+    }
+    .card .card-header {
+        @apply px-4 py-2 border-b;
+    }
+    .card .card-body {
+        @apply p-4 flex-auto;
+    }
+    .card .card-footer {
+        @apply px-4 py-2 border-t;
+    }
+    /* CARD END */
+
+    /* TOAST START */
+    .toast {
+        border-color: var(--border-color, #f2f1f1);
+        background-color: var(--background-color, #fff);
+        @apply relative flex items-start box-border p-3 drop-shadow-md rounded-md cursor-pointer transition duration-150 overflow-hidden;
+    }
+    .toast-container {
+        width: var(--width);
+        @apply fixed flex flex-col gap-4 m-4 z-30;
+    }
+    .toast.progress::before {
+        width: calc(100% * var(--progress));
+        background-color: var(--color);
+        content: "";
+        height: 2px;
+        @apply absolute bottom-0 left-0 right-0;
+    }
+    .toast.can-close::after {
+        @apply absolute right-2 top-[0.80rem] content-['\00D7'];
+    }
+    .toast-container[data-position^="top-"] {
+        @apply top-0;
+    }
+    .toast-container[data-position^="bottom-"] {
+        @apply bottom-0;
+    }
+    .toast-container[data-position$="-right"] {
+        @apply right-0;
+    }
+    .toast-container[data-position$="-left"] {
+        @apply left-0;
+    }
+    .toast-container[data-position$="-center"] {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .toast-container[data-position$="-right"] .toast {
+        transform: translateX(110%);
+    }
+    .toast-container[data-position$="-left"] .toast {
+        transform: translateX(-110%);
+    }
+    .toast-container[data-position="top-center"] .toast {
+        transform: translateY(-100vh);
+    }
+    .toast-container[data-position="bottom-center"] .toast {
+        transform: translateY(100vh);
+    }
+    .toast-container .toast.show {
+        transform: translate(0, 0);
+    }
+    /* TOAST END */
+}
