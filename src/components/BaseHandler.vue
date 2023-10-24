@@ -110,16 +110,17 @@
     });
 
     onMounted(() => {
-        console.log("Base Handler, mounted", props.saveSession, !['', null].includes(props.saveSession));
         try {
             if (props.checkToken) {
                 const { rationalized_id } = cookies.get('ProfileData');
             }
             if (!['', null].includes(props.saveSession)) {
                 const sessionValue = (props.saveSession.mode === 'local' ? localStorage.getItem(props.saveSession.key) : sessionStorage.getItem(props.saveSession.key));
-                if (sessionValue !== '') response.value = JSON.parse(sessionValue);
-                isFetching.value = false;
-                isFinished.value = true;
+                if (!['', null, undefined].includes(sessionValue)) {
+                    response.value = JSON.parse(sessionValue);
+                    isFetching.value = false;
+                    isFinished.value = true;
+                }
             }
         } catch (error) {
             console.log(error);

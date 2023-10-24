@@ -1,14 +1,14 @@
 <template>
-    <div class="dropdown" ref="dropdownCore">
+    <div class="dropdown" ref="dropdownCore" :id="customParentId">
         <button type="button" :class="['btn', togglerClass]" @click="dropdown = !dropdown">{{ name }}</button>
-        <div v-if="dropdown" :class="['shell', displayClass]">
+        <div v-show="dropdown" :class="['shell', displayClass]">
             <slot></slot>
         </div>
     </div>
 </template>
 
 <script setup>
-    import { defineProps, ref } from 'vue';
+    import { defineProps, ref, onMounted } from 'vue';
     import { onClickOutside } from '@vueuse/core';
 
     const props = defineProps({
@@ -27,6 +27,14 @@
         displayClass: {
             type: String,
             default: ''
+        },
+        customParentId: {
+            type: String,
+            required: false
+        },
+        onReady: {
+            type: Function,
+            default: () => {}
         }
     });
 
@@ -34,9 +42,10 @@
     const dropdownCore = ref(null);
 
     onClickOutside(dropdownCore, (event) => {
-        console.log("Close dropdown outside click", event);
         if (!props.preventOutsideClose) dropdown.value = false;
     });
+
+    onMounted(() => props.onReady());
 </script>
 
 <style lang="scss">

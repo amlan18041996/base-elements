@@ -1,11 +1,11 @@
 {
-  "name": "base-components",
+  "name": "base-elements",
   "private": false,
   "version": "0.1.0",
   "files": [
     "dist"
   ],
-  "module": "./dist/base-components.js",
+  "module": "./dist/base-elements.js",
   "type": "module",
   "scripts": {
     "dev": "vite",

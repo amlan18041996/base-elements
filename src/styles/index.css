@@ -4,6 +4,12 @@
 
 @tailwind utilities;
 
+@layer base {
+    .form-wrap {
+        @apply inline-flex relative w-full h-full;
+    }
+}
+
 @layer components {
     /* BUTTON START */
     .btn {
@@ -89,6 +95,13 @@
     /* BUTTON END */
 
     /* FORM ELEMENTS START */
+    .form-element {
+        @apply w-full 
+            block px-3 text-gray-600 font-normal bg-gray-50 rounded shadow-sm tracking-wide 
+            data-[size=sm]:py-1 data-[size=md]:py-1.5 data-[size=lg]:py-2 
+            data-[size=sm]:text-sm data-[size=md]:text-base data-[size=lg]:text-lg 
+            border border-solid border-gray-300 outline-0 ring-0 ring-offset-0 transition duration-300;
+    }
     /* .form-input, .form-select, .form-date {
         @apply w-full block px-3 text-gray-600 font-normal bg-gray-50 rounded shadow-sm 
             tracking-wide border border-solid border-gray-300 transition duration-300 
@@ -138,7 +151,7 @@
         @apply absolute bottom-0 left-0 right-0;
     }
     .toast.can-close::after {
-        @apply absolute right-2 top-[0.80rem] content-['\00D7'];
+        @apply absolute right-2 top-[0.55rem] content-['\00D7'];
     }
     .toast-container[data-position^="top-"] {
         @apply top-0;
@@ -172,4 +185,50 @@
         transform: translate(0, 0);
     }
     /* TOAST END */
+
+    /* CALENDAR START */
+    .calendar-container {
+        @apply min-w-[14rem] w-full bg-white rounded p-3 rounded shadow space-y-2;
+    }
+    .calendar-container .calendar-header, .calendar-container .calendar-widgets {
+        @apply flex items-center justify-between;
+    }
+    .calendar-container .calendar-widgets {
+        @apply text-xs cursor-pointer;
+    }
+    .calendar-container .calendar-widgets span {
+        @apply py-0.5 px-2 bg-gray-50 font-semibold text-blue-400 rounded hover:text-blue-600 hover:bg-gray-100;
+    }
+    .calendar-container .calendar-header .calendar-month-year {
+        @apply inline-flex gap-2 font-semibold text-sm;
+    }
+    .calendar-container .calendar-header .change-action {
+        @apply flex gap-1 select-none;
+    }
+    .calendar-container ul {
+        @apply flex flex-wrap text-center list-none gap-y-2;
+    }
+    .calendar-container ul li {
+        width: calc(100% / 7);
+        @apply text-xs text-neutral-800 whitespace-nowrap;
+    }
+    .calendar-container .calendar-weeks li {
+        @apply font-medium cursor-default;
+    }
+    .calendar-container .calendar-days li {
+        @apply relative aria-disabled:cursor-not-allowed cursor-pointer p-0.5 rounded-sm transition;
+    }
+    .calendar-container .calendar-days li.inactive{
+        @apply text-gray-300;
+    }
+    .calendar-container .calendar-days li.active{
+        @apply text-white;
+    }
+    .calendar-container .calendar-days li:hover {
+        @apply bg-stone-100;
+    }
+    .calendar-container .calendar-days li.active {
+        background: var(--custom-active-background-calendar, rgb(192 132 252));
+    }
+    /* CALENDAR STOP */
 }

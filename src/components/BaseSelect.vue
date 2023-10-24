@@ -7,7 +7,7 @@
                 </option>
             </template>
         </select>
-        <div :class="['selector-control', {show: openSelect}]">
+        <div :class="['selector-control', {show: openSelect}]" :data-size="size">
             <div class="selected">
                 <slot>
                     <template v-if="evaluateSelectedOptions.length > 0">
@@ -151,7 +151,11 @@
         hintText: {
             type: String,
             required: false
-        }
+        },
+        size: {
+            type: String,
+            default: 'md'
+        },
     });
 
     const container = ref(null);
@@ -242,10 +246,23 @@
         @apply hidden;
     }
     .select-container:focus-visible, span.open-items, span.clear-items {
-        @apply outline-none;
+        @apply inline-flex outline-none;
+    }
+    span.open-items, span.clear-items svg {
+        @apply my-auto;
     }
     .selector-control {
-        @apply w-full flex justify-between rounded py-1.5 px-3 border border-solid border-gray-300 transition cursor-pointer;
+        @apply w-full 
+            flex justify-between rounded 
+            data-[size=sm]:py-1 
+            data-[size=md]:py-1.5 
+            data-[size=lg]:py-2 
+            data-[size=sm]:text-sm 
+            data-[size=md]:text-base 
+            data-[size=lg]:text-lg 
+            px-3 
+            border border-solid border-gray-300 
+            transition cursor-pointer;
     }
     .selector-control.show {
         @apply outline-none text-gray-700 border-blue-200;

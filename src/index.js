@@ -8,29 +8,32 @@ import BaseModal from './components/BaseModal.vue'
 import BaseDropdown from './components/BaseDropdown.vue'
 import BaseToggle from './components/BaseToggle.vue'
 import BaseSelect from './components/BaseSelect.vue'
+import BaseCalendar from './components/BaseCalendar.vue'
 
-export { BaseInput, BaseTable, BaseHandler, BaseModal, BaseDropdown, BaseToggle, BaseSelect }
+export { BaseInput, BaseTable, BaseHandler, BaseModal, BaseDropdown, BaseToggle, BaseSelect, BaseCalendar }
 
-// export default {
-//     install: (app) => {
-//         app.component("base-input", BaseInput);
-//         app.component("base-table", BaseTable);
-//         app.component("base-handler", BaseHandler);
-//         app.component("base-modal", BaseModal);
-//         app.component("base-dropdown", BaseDropdown);
-//         app.component("base-toggle", BaseToggle);
-//         app.component("base-select", BaseSelect);
-//     }
-// }
+export default {
+    install: (app) => {
+        app.component("base-input", BaseInput);
+        app.component("base-table", BaseTable);
+        app.component("base-handler", BaseHandler);
+        app.component("base-modal", BaseModal);
+        app.component("base-dropdown", BaseDropdown);
+        app.component("base-toggle", BaseToggle);
+        app.component("base-select", BaseSelect);
+        app.component("base-calendar", BaseCalendar);
+    }
+}
 
-const app = createApp(App);
+// const app = createApp(App);
 
-app.component("base-input", BaseInput);
-app.component("base-table", BaseTable);
-app.component("base-handler", BaseHandler);
-app.component("base-modal", BaseModal);
-app.component("base-dropdown", BaseDropdown);
-app.component("base-toggle", BaseToggle);
-app.component("base-select", BaseSelect);
+// app.component("base-input", BaseInput);
+// app.component("base-table", BaseTable);
+// app.component("base-handler", BaseHandler);
+// app.component("base-modal", BaseModal);
+// app.component("base-dropdown", BaseDropdown);
+// app.component("base-toggle", BaseToggle);
+// app.component("base-select", BaseSelect);
+// app.component("base-calendar", BaseCalendar);
 
-app.mount('#app');
+// app.mount('#app');
