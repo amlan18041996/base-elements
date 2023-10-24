@@ -1,5 +1,5 @@
 {
-  "name": "base-elements",
+  "name": "@amlan18041996/base-elements",
   "private": false,
   "version": "0.1.0",
   "files": [
@@ -30,5 +30,17 @@
     "sass": "^1.63.6",
     "tailwindcss": "^3.3.2",
     "vite": "^4.3.9"
-  }
+  },
+  "description": "Basic utility components",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amlan18041996/base-elements.git"
+  },
+  "author": "Amlan Sengupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amlan18041996/base-elements/issues"
+  },
+  "homepage": "https://github.com/amlan18041996/base-elements#readme"
 }
